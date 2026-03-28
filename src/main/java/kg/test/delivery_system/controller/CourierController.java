@@ -4,7 +4,6 @@ import kg.test.delivery_system.entity.Courier;
 import kg.test.delivery_system.repository.CourierRepository;
 import kg.test.delivery_system.service.CourierService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,16 +1,19 @@
+   //настройка подключения к бд
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/delivery
-    username: user
-    password: password
-    profiles:
-      active: dev
-    security:
-        user:
-          name: admin
-          password: 1234
+     url: jdbc:postgresql://localhost:5433/delivery
+     username: user
+     password: password
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+jpa:
+     hibernate:
+       ddl-auto: update
+     show-sql: true
+
+profiles:
+     active: dev
+
+security:
+     user:
+       name: admin
+       password: 1234

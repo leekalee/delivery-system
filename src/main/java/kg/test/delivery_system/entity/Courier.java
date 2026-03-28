@@ -1,20 +1,21 @@
 package kg.test.delivery_system.entity;
 
-import jakarta.persistence.*;
-import kg.test.delivery_system.repository.CourierRepository;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
-@Entity
+@Entity //Это таблица в базе данных
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder //удобно создавать объект
 public class Courier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 }

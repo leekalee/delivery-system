@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
-@ControllerAdvice
+@ControllerAdvice //Лови ВСЕ ошибки из всех контроллеров
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)

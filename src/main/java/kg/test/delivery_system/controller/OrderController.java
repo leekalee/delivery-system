@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     private final OrderService orderService;
-    private final OrderMapper orderMapper;
 
     @GetMapping
     public Page<OrderResponseDTO> getAll(Pageable pageable) {

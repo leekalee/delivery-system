@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+//где пишется логика приложения
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -29,36 +29,13 @@ public class OrderService {
     }
 
     public OrderResponseDTO update(Long id, OrderRequestDTO request) {
-
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
-
         order.setCustomerName(request.getCustomerName());
         order.setAddress(request.getAddress());
         order.setStatus(request.getStatus());
-
         orderRepository.save(order);
-
         return orderMapper.toResponse(order);
-    }
-
-    public void deleteCourier(Long id) {
-
-        Courier courier = courierRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Courier not found"));
-
-        // 👉 находим все заказы этого курьера
-        List<Order> orders = orderRepository.findAll();
-
-        for (Order order : orders) {
-            if (order.getCourier() != null && order.getCourier().getId().equals(id)) {
-                order.setCourier(null); // 🔥 ВОТ ЭТО
-            }
-        }
-
-        orderRepository.saveAll(orders); // сохраняем изменения
-
-        courierRepository.deleteById(id);
     }
 
     public OrderResponseDTO create(OrderRequestDTO request) {
@@ -66,6 +43,7 @@ public class OrderService {
                 .orElseThrow(() -> new RuntimeException("Courier not found"));
 
         Order order = orderMapper.toEntity(request);
+        order.setCourier(courier);
         return orderMapper.toResponse(orderRepository.save(order));
     }
 

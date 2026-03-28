@@ -5,11 +5,11 @@ import kg.test.delivery_system.dto.OrderResponseDTO;
 import kg.test.delivery_system.entity.Courier;
 import kg.test.delivery_system.entity.Order;
 import org.springframework.stereotype.Component;
-
-@Component  // 🔥 ВОТ ЭТО САМОЕ ВАЖНОЕ
+//переводчик между слоями
+@Component  //Создай этот класс и используй его как бин
 public class OrderMapper {
 
-    public OrderResponseDTO toResponse(Order order) {
+    public OrderResponseDTO toResponse(Order order) { //превращает Entity → DTO
         OrderResponseDTO response = new OrderResponseDTO();
         response.setId(order.getId());
         response.setCustomerName(order.getCustomerName());
