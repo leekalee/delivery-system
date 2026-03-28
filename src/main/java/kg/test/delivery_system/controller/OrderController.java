@@ -6,6 +6,7 @@ import kg.test.delivery_system.mapper.OrderMapper;
 import kg.test.delivery_system.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,11 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping
-    public Page<OrderResponseDTO> getAll(Pageable pageable) {
+    public Page<OrderResponseDTO> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
         return orderService.getAll(pageable);
     }
 
