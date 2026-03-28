@@ -23,6 +23,6 @@ public class Order {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "courier_id")
+    @JoinColumn(name = "courier_id", nullable = true)
     private Courier courier;
 }
