@@ -34,6 +34,6 @@ public class OrderController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        orderService.deleteCourier(id);
+        orderService.delete(id);
     }
 }

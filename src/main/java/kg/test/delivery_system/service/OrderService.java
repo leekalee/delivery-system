@@ -51,4 +51,8 @@ public class OrderService {
         return orderRepository.findAll(pageable)
                 .map(orderMapper::toResponse);
     }
+
+    public void delete(Long id) {
+        orderRepository.deleteById(id);
+    }
 }
